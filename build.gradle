@@ -1,5 +1,5 @@
 plugins {
-    id "jaci.openrio.gradle.GradleRIO" version "2018.01.20" apply false
+    id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-1" apply false
 }
 
 // Only clean our code, don't clean googletest
@@ -14,22 +14,28 @@ subprojects {
         model {
             binaries {
                 withType(GoogleTestTestSuiteBinarySpec) {
-                    lib project: ":", library: "googleTest", linkage: "static"
                     if (targetPlatform.name == 'roborio') buildable = false;    // Don't test on a platform we can't run
+                    else {
+                        if (toolChain instanceof VisualCpp)
+                            cppCompiler.args << "/FS"
+                        else
+                            linker.args << "-pthread"
+                        lib project: ":", library: "googleTest", linkage: "static"
+                    }
                 }
             }
         }
     }
 }
 
-apply plugin: "jaci.openrio.gradle.GradleRIO"
+apply plugin: "edu.wpi.first.GradleRIO"
 apply plugin: "cpp"
 
 model {
     components {
         // G Test is build along with the project, but you could easily use your own prebuilt libraries.
         googleTest(NativeLibrarySpec) {
-            targetPlatform 'any64'
+            targetPlatform 'desktop'
 
             sources.cpp {
                 source {
@@ -45,11 +51,11 @@ model {
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.4'
-}
-
 task visualStudio() {
     dependsOn ':robot:frcUserProgramVisualStudio'
     dependsOn ':subsystems:subsystemsVisualStudio'
+}
+
+wrapper {
+    gradleVersion = '4.8.1'
 }

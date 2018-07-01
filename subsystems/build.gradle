@@ -1,4 +1,4 @@
-apply plugin: "jaci.openrio.gradle.GradleRIO"
+apply plugin: "edu.wpi.first.GradleRIO"
 apply plugin: "cpp"
 apply plugin: 'google-test-test-suite'
 
@@ -8,7 +8,7 @@ model {
         // i.e. one per subsystem (drive, elevator, arm, winch, etc)
         subsystems(NativeLibrarySpec) {
             targetPlatform 'roborio'
-            targetPlatform 'any64'
+            targetPlatform 'desktop'
 
             sources.cpp {
                 source {
