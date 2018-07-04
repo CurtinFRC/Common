@@ -8,15 +8,15 @@ typedef enum {
 
 class Toggle {
 public:
-  Toggle(toggleEvent _mode);
+  Toggle(toggleEvent _mode = toggleEvent::ONRISE);
   Toggle(toggleEvent _mode, bool initState);
 
   bool tick(bool val);
 
-  bool getState();
+  bool getTriggered();
 
 private:
   toggleEvent mode;
-  bool state;
+  bool triggered;
   bool lstate;
 };

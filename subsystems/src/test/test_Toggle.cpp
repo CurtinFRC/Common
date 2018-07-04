@@ -1,22 +1,11 @@
-.#include "gtest/gtest.h"
+#include "gtest/gtest.h"
 
-#include "Toggle/Toggle.h"
+#include "Toggle.h"
 
-TEST(Toggle, DefConstructor) {
-  Toggle toggleFall(toggleEvent::ONFALL), toggleRise(toggleEvent::ONRISE);
-  Toggle toggleChange(toggleEvent::ONCHANGE);
+TEST(Toggle, DefConstructors) {
+  Toggle toggleDef1();
 
-  ASSERT_EQ(toggleFall.getState(), true);
-  ASSERT_EQ(toggleRise.getState(), false);
-  ASSERT_EQ(toggleChange.getState(), false);
-}
-
-TEST(Toggle, ManConstructor) {
-  Toggle toggleFall(toggleEvent::ONFALL, false), toggleRise(toggleEvent::ONRISE, true), toggleChange(toggleEvent::ONCHANGE, true);
-
-  ASSERT_EQ(toggleFall.getState(), false);
-  ASSERT_EQ(toggleRise.getState(), true);
-  ASSERT_EQ(toggleChange.getState(), true);
+  EXPECT_EQ(toggleDef1.tick(true), true);
 }
 
 TEST(Toggle, Falling) {

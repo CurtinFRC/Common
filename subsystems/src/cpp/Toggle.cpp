@@ -2,21 +2,21 @@
 
 Toggle::Toggle(toggleEvent _mode) {
   mode = _mode;
-  state = false;
+  triggered = false;
   lstate = _mode == 2 ? false : !_mode;
 }
 
 Toggle::Toggle(toggleEvent _mode, bool initState) {
   mode = _mode;
-  state = false;
+  triggered = false;
   lstate = initState;
 }
 
 bool Toggle::tick(bool val) {
-  state = lstate != val && !val != mode;
+  triggered = lstate != val && !val != mode;
   lstate = val;
 
-  return state;
+  return triggered;
 }
 
-bool Toggle::getState() { return state; }
+bool Toggle::getTriggered() { return triggered; }
