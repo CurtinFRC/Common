@@ -3,9 +3,9 @@
 #include "Toggle.h"
 
 TEST(Toggle, DefConstructors) {
-  Toggle toggleDef1();
+  Toggle toggleDef();
 
-  EXPECT_EQ(toggleDef1.tick(true), true);
+  EXPECT_EQ(toggleDef.tick(true), true);
 }
 
 TEST(Toggle, Falling) {
