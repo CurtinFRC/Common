@@ -44,3 +44,4 @@ junit/
 *.vcxproj.*
 
 .vs/
+log\.txt
