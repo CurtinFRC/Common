@@ -16,11 +16,14 @@ subprojects {
                 withType(GoogleTestTestSuiteBinarySpec) {
                     if (targetPlatform.name == 'roborio') buildable = false;    // Don't test on a platform we can't run
                     else {
-                        if (toolChain instanceof VisualCpp)
-                            cppCompiler.args << "/FS"
-                        else
-                            linker.args << "-pthread"
                         lib project: ":", library: "googleTest", linkage: "static"
+                    }
+                }
+                all {
+                    if (toolChain instanceof VisualCpp) {
+                        cppCompiler.args << "/FS"
+                    } else {
+                        linker.args << "-pthread"
                     }
                 }
             }

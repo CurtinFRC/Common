@@ -1,5 +1,7 @@
 {
     "files.associations": {
         "cmath": "cpp"
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "disabled",
+    "C_Cpp.default.configurationProvider": "vscode-wpilib"
 }
