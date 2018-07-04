@@ -1,22 +1,22 @@
-#include "Toggle.h"
+#include "toggle.h"
 
-Toggle::Toggle(toggleEvent _mode) {
-  mode = _mode;
-  triggered = false;
-  lstate = _mode == 2 ? false : !_mode;
+toggle::toggle(toggle_event mode) {
+  _mode = mode;
+  _triggered = false;
+  _lstate = mode == 2 ? false : !mode;
 }
 
-Toggle::Toggle(toggleEvent _mode, bool initState) {
-  mode = _mode;
-  triggered = false;
-  lstate = initState;
+toggle::toggle(toggle_event mode, bool initState) {
+  _mode = mode;
+  _triggered = false;
+  _lstate = initState;
 }
 
-bool Toggle::tick(bool val) {
-  triggered = lstate != val && !val != mode;
-  lstate = val;
+bool toggle::tick(bool val) {
+  _triggered = _lstate != val && !val != _mode;
+  _lstate = val;
 
-  return triggered;
+  return _triggered;
 }
 
-bool Toggle::getTriggered() { return triggered; }
+bool toggle::getTriggered() { return _triggered; }

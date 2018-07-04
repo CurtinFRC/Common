@@ -4,19 +4,19 @@ typedef enum {
   ONFALL,
   ONRISE,
   ONCHANGE
-} toggleEvent;
+} toggle_event;
 
-class Toggle {
+class toggle {
 public:
-  Toggle(toggleEvent _mode = toggleEvent::ONRISE);
-  Toggle(toggleEvent _mode, bool initState);
+  toggle(toggle_event mode = toggle_event::ONRISE);
+  toggle(toggle_event mode, bool init_state);
 
   bool tick(bool val);
 
   bool getTriggered();
 
 private:
-  toggleEvent mode;
-  bool triggered;
-  bool lstate;
+  toggle_event _mode;
+  bool _triggered;
+  bool _lstate;
 };
