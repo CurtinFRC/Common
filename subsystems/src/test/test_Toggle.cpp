@@ -2,7 +2,7 @@
 
 #include "Toggle.h"
 
-TEST(Toggle, DefConstructors) {
+TEST(Toggle, DefConstructor) {
   Toggle toggleDef();
 
   EXPECT_EQ(toggleDef.tick(true), true);
