@@ -1,5 +1,5 @@
 plugins {
-    id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-1" apply false
+    id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-2" apply false
 }
 
 // Only clean our code, don't clean googletest
