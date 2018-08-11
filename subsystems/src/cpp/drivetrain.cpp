@@ -9,11 +9,11 @@ coupled_drivetrain_out coupled_drivetrain::calculate_angular(double heading, dou
   double angular_error = gyro - heading;
   // This will need tuning.
   // rad/s = kP * angular_error (rad), kP = 1/s
-  double turn_rate = 0.5 * (angular_error / 180.0f * 3.1415); 
-  
+  double turn_rate = 0.5 * (angular_error / 180.0f * 3.1415);
+
   // linear velocity = radius * angular velocity
   double turn_v = (_track_width / 2) * turn_rate;
-  
+
   // doesn't approach true linear speed we want, but good enough
   double vel_left = turn_v + speed;
   double vel_right = turn_v - speed;

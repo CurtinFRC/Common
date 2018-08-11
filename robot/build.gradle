@@ -1,4 +1,4 @@
-apply plugin: "jaci.openrio.gradle.GradleRIO"
+apply plugin: "edu.wpi.first.GradleRIO"
 apply plugin: "cpp"
 
 wpi {
@@ -20,11 +20,9 @@ model {
                     include '**/*.hpp', '**/*.h'
                 }
 
-                lib library: "wpilib"
-                lib library: "ctre"
-                lib library: "navx"
                 lib project: ":subsystems", library: "subsystems", linkage: "static"
             }
+            useLibrary(it, "wpilib", "ctre", "navx")
         }
     }
 }
